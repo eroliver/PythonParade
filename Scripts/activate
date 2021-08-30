@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\eoliver\Desktop\Code\Python\PythonParade"
+VIRTUAL_ENV="C:\Users\eroli\PycharmProjects\PythonParade"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
