@@ -14,9 +14,9 @@ def extract(page):
 def transform(soup):
     divs = soup.find_all('div', class_='slider_container')
     for div in divs:
-        if div.span['title'] is not None:
-            title = div.span['title']
-        print(title)
+        if 'title' in div.span.attrs:
+            print(div.span.attrs['title'])
+        #print(title)
     return
 
 
