@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas
 
 
 def extract(page):
@@ -9,11 +10,12 @@ def extract(page):
     r = requests.get(url, headers)
     soup = BeautifulSoup(r.content, 'html.parser')
     return soup
+
+
 # home user agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
 #                             'Chrome/93.0.4577.63 Safari/537.36
 # work user agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
 #                              'Chrome/92.0.4515.159 Safari/537.36
-
 
 
 def transform(soup):
@@ -38,10 +40,26 @@ def transform(soup):
         try:
             salary = div.find('span', class_='salary-snippet').text.strip()
         except:
-            salary = 'Not Listed'
-        print(f'{job_title} : {company_name} : {salary}')
+            salary = 'Salary Not Listed'
+        summary = div.find('div', class_='job-snippet').text.strip()
+
+        job_posting = {
+            'title': job_title,
+            'company': company_name,
+            'salary': salary,
+            'summary': summary
+        }
+        job_list.append(job_posting)
+        print(len(job_list))
     return
 
 
-c = extract(0)
-transform(c)
+job_list = []
+
+for page in range(0, 40, 10):
+    c = extract(0)
+    transform(c)
+
+data_frame = pandas.DataFrame(job_list)
+print(data_frame.head())
+data_frame.to_csv('jobs.csv')
