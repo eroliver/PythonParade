@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas
+import math
 
 
 def extract(page):
@@ -50,16 +51,17 @@ def transform(soup):
             'summary': summary
         }
         job_list.append(job_posting)
-        print(len(job_list))
     return
 
 
 job_list = []
 
-for page in range(0, 40, 10):
-    c = extract(0)
-    transform(c)
+# for page in range(0, 40, 10):
 
-data_frame = pandas.DataFrame(job_list)
-print(data_frame.head())
-data_frame.to_csv('jobs.csv')
+c = extract(0)
+transform(c)
+
+print(job_list)
+# data_frame = pandas.DataFrame(job_list)
+# print(data_frame.head())
+# data_frame.to_csv('jobs.csv')

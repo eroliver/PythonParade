@@ -30,11 +30,20 @@ class SayHello(App):
         self.button3 = Button(text='Kiosk3')
         self.window.add_widget(self.button3)
 
+        self.button5 = Button(text="Kiosk 5")
+        self.button5.bind(on_press=self.callbacktest)
+        self.KioskName = "mtrcage8"
+        self.window.add_widget(self.button5)
+
         return self.window
 
     # obviously this only works for 1 kiosk and would need to be passed the system name, but that didn't work.
     def button_callback(self, system):
-        subprocess.run('ping mtrmgtkiosk1')
+        system = self.system_name
+        subprocess.run('ping ' + self.system_name)
+
+    def callbacktest(self, KioskName):
+        subprocess.run("shutdown /r /m \\\\" + self.KioskName)
 
 
 if __name__ == "__main__":
