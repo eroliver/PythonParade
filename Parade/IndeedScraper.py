@@ -39,7 +39,7 @@ def transform(soup):
             if 'title' in attributes:
                 job_title = attributes['title'].strip()
         try:
-            salary = div.find('span', class_='salary-snippet').text.strip()
+            salary = div.find('div', class_='attribute_snippet').text
         except:
             salary = 'Salary Not Listed'
         summary = div.find('div', class_='job-snippet').text.strip()
