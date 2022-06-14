@@ -4,7 +4,7 @@ https://www.youtube.com/channel/UC8k9jpaeyitFgB0tanVPB9g but I think it could be
 like found on coloring pages.'''
 import cv2
 
-image = cv2.imread("portrait.jfif")
+image = cv2.imread("saphira.jpg")
 grey_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 inverted_img = cv2.bitwise_not(grey_img)
 blurred_img = cv2.GaussianBlur(inverted_img, (21,21), 0)
