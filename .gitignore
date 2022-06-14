@@ -144,3 +144,6 @@ dmypy.json
 cython_debug/
 
 !/pyvenv.cfg
+
+# exclude images because they are not public 
+Parade/Flashcards/die.jpg
