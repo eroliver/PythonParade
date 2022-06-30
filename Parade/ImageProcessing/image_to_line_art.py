@@ -4,7 +4,7 @@
 # like found on coloring pages.'''
 import cv2
 
-image = cv2.imread("imageName.jpg")
+image = cv2.imread("black_dragon.jpg")
 grey_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 inverted_img = cv2.bitwise_not(grey_img)
 blurred_img = cv2.GaussianBlur(inverted_img, (21,21), 0)
@@ -21,4 +21,6 @@ def display_image(image):
     cv2.imshow("Display window", image)
     k = cv2.waitKey(0)
     if k == ord("s"):
-        cv2.imwrite("starry_night.png", image)
+        cv2.imwrite("sketch.png", image)
+
+display_image(sketch)
