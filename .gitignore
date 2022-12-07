@@ -147,3 +147,10 @@ cython_debug/
 
 # exclude images because they are not public 
 Parade/Flashcards/die.jpg
+Parade/Flashcards/yes.jpg
+Parade/ImageProcessing/black_dragon.jpg
+Parade/ImageProcessing/sketch1.png
+
+*.png
+*.jpeg
+*.jpg

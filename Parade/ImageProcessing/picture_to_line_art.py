@@ -4,17 +4,25 @@
 # like found on coloring pages.'''
 import cv2
 
-image = cv2.imread("black_dragon.jpg")
-grey_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-inverted_img = cv2.bitwise_not(grey_img)
-blurred_img = cv2.GaussianBlur(inverted_img, (21,21), 0)
-inverted_blurred = cv2.bitwise_not(blurred_img)
-#sketch0 = cv2.divide(grey_img, inverted_blurred, scale= 230.0)
-sketch = cv2.divide(grey_img, inverted_blurred, scale= 240.0)
-#sketch2 = cv2.divide(grey_img, inverted_blurred, scale= 250.0)
-#cv2.imwrite("sketch.png", sketch0)
-cv2.imwrite("sketch1.png", sketch)
-#cv2.imwrite("sketch2.png", sketch2)
+
+def create_line_art(file_name: str) -> str:
+    image = cv2.imread(f"images/{file_name}")
+    grey_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    inverted_img = cv2.bitwise_not(grey_img)
+    blurred_img = cv2.GaussianBlur(inverted_img, (21,21), 0)
+    inverted_blurred = cv2.bitwise_not(blurred_img)
+    #sketch0 = cv2.divide(grey_img, inverted_blurred, scale= 230.0)
+    sketch = cv2.divide(grey_img, inverted_blurred, scale= 240.0)
+    #sketch2 = cv2.divide(grey_img, inverted_blurred, scale= 250.0)
+    #cv2.imwrite("sketch.png", sketch0)
+    cv2.imwrite(f"edited_images/{file_name}", sketch)
+    #cv2.imwrite("sketch2.png", sketch2)
+
+# method to grab all images from the images folder for testing
+def group_process():
+    # grab all images from images and run through create_line_art()
+    pass
+
 
 def display_image(image):
     global k
@@ -23,4 +31,6 @@ def display_image(image):
     if k == ord("s"):
         cv2.imwrite("sketch.png", image)
 
-display_image(sketch)
+#display_image(sketch)
+
+create_line_art("neebs logo.png")
