@@ -11,13 +11,14 @@ edited_folder = path.abspath(path.join(getcwd(), "edited_images\\"))
 
 
 def create_sketch(file_name: str) -> str:
-    image = cv2.imread(f"images/{file_name}")
+    image = cv2.imread(f"{image_folder}/{file_name}")
     grey_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     inverted_img = cv2.bitwise_not(grey_img)
     blurred_img = cv2.GaussianBlur(inverted_img, (21,21), 0)
     inverted_blurred = cv2.bitwise_not(blurred_img)
     sketch = cv2.divide(grey_img, inverted_blurred, scale= 240.0)
-    cv2.imwrite(f"edited_images/{file_name}", sketch)
+    cv2.imwrite(f"{edited_folder}/{file_name}", sketch)
+    print(f"image: {image}, grey_img: {grey_img}, \nfile_name: {file_name}")
 
 # Used to test image on different blur scales, will modify main function to take multiple args, for ever int arg passed,
 # it will blur at that scale and return an image for each

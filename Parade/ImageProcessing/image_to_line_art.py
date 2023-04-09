@@ -1,6 +1,6 @@
 from PIL import Image, ImageFilter, ImageChops
 from os import scandir, getcwd, path
-
+from picture_to_sketch import create_sketch
 
 image_folder = path.abspath(path.join(getcwd(), "images\\"))
 edited_folder = path.abspath(path.join(getcwd(), "edited_images\\"))
@@ -21,3 +21,5 @@ def group_process():
         create_line_art(image)
     print(image_folder, "\n", edited_folder, "\n", all_images)
 
+if __name__ == "__main__":
+    create_sketch("F:/Projects/PycharmProjects/PythonParade/Parade/ImageProcessing/images/neebs logo.png")
